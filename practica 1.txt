@@ -1,0 +1,37 @@
+Ejercicio de gestión de productos de comida angular
+Este ejercicio está diseñado para ayudar a los nuevos miembros del equipo a aprender Angular, Tailwind CSS, Express y Cypress mediante
+ la creación de una aplicación web para administrar productos de comida.
+
+Requisitos
+Implemente una funcionalidad de inicio de sesión donde el usuario pueda ingresar sus credenciales y recibir un token de autenticación. Guarde el token
+ en el almacenamiento local para futuras llamadas a la API.
+
+Cree un servicio que maneje todas las llamadas a la API. Este servicio debe incluir métodos de autenticación, obtención de productos alimenticios, 
+creación de nuevos productos, actualización de productos existentes y eliminación de productos.
+
+Implemente la validación de autenticación para garantizar que el usuario esté autenticado antes de acceder a la vista principal de la aplicación.
+Después de iniciar sesión correctamente, muestre una lista de productos alimenticios. Cada producto debe mostrar su nombre, descripción y precio.
+
+Cree un modal para crear y editar productos. El modal debe tener campos de entrada para ingresar el nombre, la descripción y el precio del producto.
+Implementar la funcionalidad para eliminar un producto. Esto se puede hacer a través de un cuadro de diálogo de confirmación o un botón de eliminación en cada
+ elemento del producto.
+
+Configure una API de Nestjs para manejar operaciones CRUD para los productos alimenticios.
+
+ Utilice cualquier base de datos de su elección para almacenar la información del producto.
+
+Esta API debe incluir puntos finales para la autenticación,
+la obtención de productos, la creación de nuevos productos, la actualización de productos existentes y la eliminación de productos.
+Asegúrese de que la API aplique la autenticación para las rutas protegidas.
+Escriba pruebas de un extremo a otro utilizando Cypress para garantizar que la aplicación funcione como se espera. Cubra escenarios como el inicio de sesión,
+ la búsqueda y visualización de productos,
+la creación de nuevos productos, la edición de productos existentes y la eliminación de productos.
+
+Sugerencias adicionales
+Implemente el manejo de errores y muestre los mensajes de error apropiados cuando fallan las llamadas a la API.
+Use el enrutamiento angular para navegar entre diferentes vistas de la aplicación.
+Implemente la validación de formularios para el modal de creación y edición para garantizar que todos los campos obligatorios se completen correctamente.
+Agregue paginación o desplazamiento infinito a la lista de productos alimenticios si la cantidad de productos es grande.
+Implemente la funcionalidad de búsqueda y filtrado para permitir a los usuarios encontrar productos alimenticios específicos.
+Cubre los temas principales de Angular, Tailwind CSS, Nestjs y Cypress y proporciona un buen punto de partida para capacitar a los nuevos miembros del equipo.
+
