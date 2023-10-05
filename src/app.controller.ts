@@ -1,9 +1,8 @@
 import { Request, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
-import { LocalAuthGuard } from './auth/local-auth.guard';
-import { AuthenticateGuard } from './auth/authenticated.guard';
+
+
 import { AuthService } from './auth/auth.service';
-import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { EntitySchemaOptions } from 'typeorm';
 
 @Controller()
@@ -17,7 +16,7 @@ export class AppController {
   login(@Request() req): any {
     //Todo:
 
-    return this.authService.login(req.body);
+    return this.authService.login();
   }
 
 
