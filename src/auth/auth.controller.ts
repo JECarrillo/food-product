@@ -1,43 +1,45 @@
-import { Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, UseGuards, } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { Request } from '@nestjs/common/decorators';
+import { Body, Request } from '@nestjs/common/decorators';
+import { RegisterDto } from './dto/register.dto';
+import { LoginDto } from './dto/login.dto';
+import * as authGuard from './guard/auth.guard';
+
+
 
 
 @Controller('auth')
 export class AuthController {
 
 
-    constructor(private readonly AuthService: AuthService) { }
+    constructor(private readonly authService: AuthService) { }
 
     @Post('login')
-    login() {
-        return this.AuthService.login();
+    login(
+        @Body()
+        loginDto: LoginDto,
+    ) {
+        console.log(loginDto)
+        return this.authService.login(loginDto);
     }
 
 
     @Post('register')
-    register() {
-        return this.AuthService.register();
+    register(
+        @Body()
+        registerDto: RegisterDto
+
+    ) {
+        console.log(registerDto)
+        return this.authService.register(registerDto);
     }
 
-
-    //     @Post('login')
-    // async login(@Request() req): Promise<User | null> {
-    //   console.log('login route en auth.controller');
-
-    //   const { username, password } = req.body; // Obtén las credenciales del cuerpo de la solicitud
-    //     console.log(username ,"usuario", password ,"contrase;a")
-    //   const user = await this.AuthService.validateUser(username, password);
-
-
-    //   return null;
-    // }
-
-    //     @UseGuards()
-    //     @Get('protected')
-    //     protected():string{
-    //         return "";
-    //     }
-
+    
+    @Get('profile')
+    @UseGuards(authGuard.AuthGuard)
+    profile(
+        @Request() req ){
+        return req.user;
+    }
 
 }
