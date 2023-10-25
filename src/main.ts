@@ -1,15 +1,23 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as express from 'express';
-import * as cors from 'cors'; // Importa el módulo de CORS
-import * as session from 'express-session';
-import * as passport from 'passport';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Habilita CORS para la aplicación Nest.js
+  const options = new DocumentBuilder()
+    .setTitle('Productos')
+    .setDescription('descripcion de API de comida')
+    .setVersion('1.0')
+    .addTag('producto')
+    .build();
+
+    const document =SwaggerModule.createDocument(app, options);
+    SwaggerModule.setup('api/docs', app, document )
+
+  
+
   app.enableCors();
 
 app.useGlobalPipes(

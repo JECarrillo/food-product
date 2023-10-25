@@ -18,7 +18,7 @@ import { AuthService } from './auth/auth.service';
     TypeOrmModule.forFeature([Users]),
     UsersModule,
     TypeOrmModule.forRoot(databaseConfig),
-    TypeOrmModule.forFeature([Product]), //Product es la clase Entity
+    TypeOrmModule.forFeature([Product]),
     AuthModule,
 
   ],
