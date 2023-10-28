@@ -8,10 +8,11 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post()
-  async createProduct(@Body() productData: Partial<Product>): Promise<Product> {
-    return this.productsService.create(productData);
+  async createProduct(@Body() productData: { name: string, description: string, price: number, categoryid: number }): Promise<Product> {
+      return this.productsService.create(productData);
   }
-
+  
+ 
   @Get()
   async getAllProducts(): Promise<Product[]> {
     return this.productsService.findAll();
@@ -23,9 +24,10 @@ export class ProductsController {
   }
 
   @Put(':id')
-  async updateProduct(@Param('id') id: number, @Body() productData: Partial<Product>): Promise<Product | undefined> {
+async updateProduct(@Param('id') id: number, @Body() productData: { name: string, description: string, price: number, categoryid: number }): Promise<Product | undefined> {
     return this.productsService.update(id, productData);
-  }
+}
+
 
   @Delete(':id')
   async deleteProduct(@Param('id') id: number): Promise<void> {

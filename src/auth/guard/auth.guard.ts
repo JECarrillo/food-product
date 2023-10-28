@@ -21,13 +21,13 @@ export class AuthGuard implements CanActivate {
                     secret: jwtConstants.secret,
                 });
                 request.user= payload;
-           // request['user'] = payload;
+           
 
            
         } catch  {
            throw new UnauthorizedException();
         }
-        return true; // Permite el acceso
+        return true; 
     }
 
     private extractTokenFromHeader(request: Request): string | undefined {

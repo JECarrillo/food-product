@@ -2,18 +2,20 @@ import { Injectable, NotFoundException, Delete, BadRequestException } from '@nes
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Product } from 'src/products/products.entity';
+import { CategoriesService } from 'src/categories/service/category.service';
 
 @Injectable()
 export class ProductsService {
+  
 
-  //constructor
   constructor(
     @InjectRepository(Product)
     private productRepository: Repository<Product>,
+    private categoriesService: CategoriesService
   ) {}
 
-  //Métodos
   async create(productData: Partial<Product>): Promise<Product> {
+  
     const newProduct = this.productRepository.create(productData);
     return this.productRepository.save(newProduct);
   }
@@ -36,6 +38,7 @@ export class ProductsService {
       throw new NotFoundException(`Product with ID ${id} not found`);
     }
     Object.assign(existingProduct, productData);
+    console.log(productData);
     return this.productRepository.save(existingProduct);
   }
 
