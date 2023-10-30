@@ -16,10 +16,7 @@ export class Product {
     @Column()
     price: number;
 
-    @Column()
-    categoryId: number
-
     @ManyToOne(() => Category, category => category.products)
-    @JoinColumn({name: 'categoryId'})
+    @JoinColumn({ name: 'categoryId' })
     category: Category;
 }
