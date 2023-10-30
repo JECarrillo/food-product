@@ -21,7 +21,10 @@ export class ProductsService {
   }
 
   async findAll(): Promise<Product[]> {
-    return this.productRepository.find();
+    return this.productRepository
+      .find({
+        relations:['category']
+      })
   }
 
   async findById(id): Promise<Product | undefined> {
@@ -38,7 +41,6 @@ export class ProductsService {
       throw new NotFoundException(`Product with ID ${id} not found`);
     }
     Object.assign(existingProduct, productData);
-    console.log(productData);
     return this.productRepository.save(existingProduct);
   }
 
